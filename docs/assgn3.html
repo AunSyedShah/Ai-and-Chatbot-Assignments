@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 3</title>
+</head>
+
+<body>
+    <h3>Currency Converter</h3>
+    <br><br>
+    <label for="usd">USD</label>
+    <input type="number" name="usd" id="usd" value="0">
+    <br>
+    <br>
+    <label for="pkr">PKR</label>
+    <input type="number" name="pkr" id="pkr" value="0">
+    <br><br><br>
+    <button onclick="calculate()">Calculate</button>
+    <br><br><br><br>
+    <h3 id="result"></h3>
+    <br><br><br><br><br>
+    <h3>Grades Calculator</h3>
+    <br><br>
+    <label for="percentage">Percentage</label>
+    <input type="number" name="marks" id="marks" value="0">
+    <br><br>
+    <button onclick="calculateGrades()">Calculate Grades</button>
+    <br><br>
+    <h3 id="grades_output"></h3>
+
+    <br><br><br>
+    <h1>Jacket Checker</h1>
+    <h3>should I carry jacket today</h3>
+    <label for="currentTemperature">Current Temperature</label>
+    <input type="number" name="currentTemperature" id="currentTemperature" value="0">
+    <button onclick="checkJacketStatus()">check Jacket status</button>
+    <br><br>
+    <h3 id="jacketOutput"></h3>
+
+    <script>
+        const rate = 170;
+        function pkrToUsd(pkr) {
+            return pkr / rate;
+        }
+        function usdToPkr(usd) {
+            return usd * rate;
+        }
+        function calculate() {
+            const usd = Number(document.getElementById("usd").value);
+            const pkr = Number(document.getElementById("pkr").value);
+            if (usd === 0 && pkr === 0) {
+                document.getElementById("result").innerText = "Both fields can not be zero";
+            }
+            else if (usd !== 0 && pkr !== 0) {
+                document.getElementById("result").innerText = "Both fields can not have values simultaneously";
+            }
+            else if (usd === 0) {
+                converted_usd = pkrToUsd(pkr).toFixed(2);
+                document.getElementById("result").innerText = String(converted_usd) + " $";
+            }
+            else if (pkr === 0) {
+                converted_pkr = usdToPkr(usd).toFixed(2);
+                document.getElementById("result").innerText = String(converted_pkr) + " PKR";
+            }
+        }
+
+        function calculateGrades() {
+            const marks = Number(document.getElementById("marks").value);
+            if (marks <= 0) {
+                document.getElementById("grades_output").innerText = "Percentage can not be zero or a negative number";
+            }
+            else if ((marks > 80) || (marks === 80)) {
+                document.getElementById("grades_output")
+                    .innerText = "Grade A1";
+            } else if ((marks >= 70) && (marks <= 79)) {
+                document.getElementById("grades_output")
+                    .innerText = "Grade A";
+            } else if ((marks >= 60) && (marks <= 69)) {
+                document.getElementById("grades_output")
+                    .innerText = "Grade b";
+            } else if (marks < 60) {
+                document.getElementById("grades_output")
+                    .innerText = "Fail";
+            }
+        }
+
+        function checkJacketStatus() {
+            const temperature = document.getElementById("currentTemperature").value;
+            if(temperature <= 0){
+                document.getElementById("jacketOutput").innerText = "Don't go out!";
+            }
+            else if(temperature < 15){
+                document.getElementById("jacketOutput").innerText = "carry coat";
+            }
+            else if(temperature < 25){
+                document.getElementById("jacketOutput").innerText = "carry jacket";
+            }
+            else if(temperature >= 25 && temperature <= 40){
+                document.getElementById("jacketOutput").innerText = "don't carry jacket";
+            }
+            else{
+                document.getElementById("jacketOutput").innerText = `Don't you think, You went beyond the limits, ${temperature} C is quite high.`;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
