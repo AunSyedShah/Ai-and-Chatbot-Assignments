@@ -10,7 +10,6 @@
 
 <body>
     <h2>Print Even Numbers within a certain range using For loop</h2>
-    <p>Note: Prints the results on console</p>
     <label for="numberRange">Enter Range</label>
     <input type="number" name="numberRange" id="numberRange">
     <button onclick="printPrimeNumbers()">Print Even Numbers</button>
@@ -23,7 +22,9 @@
             let numberRange = Number(document.getElementById("numberRange").value);
             for (let index = 1; index <= numberRange; index++) {
                 if((index) % 2 === 0){
-                    console.log(index);
+                    let para = document.createElement("p");
+                    para.innerHTML = index;
+                    document.body.appendChild(para);
                 }
             }
         }
