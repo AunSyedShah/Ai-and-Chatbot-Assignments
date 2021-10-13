@@ -9,25 +9,24 @@
 </head>
 
 <body>
-    <label for="firstNumber">First Number</label>
-    <input type="number" name="firstNumber" id="firstNumber" value="1">
-    <label for="secondNumber">Second Number</label>
-    <input type="number" name="secondNumber" id="secondNumber" value="100">
+    <h2>Print Even Numbers within a certain range using For loop</h2>
+    <p>Note: Prints the results on console</p>
+    <label for="numberRange">Enter Range</label>
+    <input type="number" name="numberRange" id="numberRange">
+    <button onclick="printPrimeNumbers()">Print Even Numbers</button>
     <br><br>
-    <button onclick="printPrimeNumbers()">Print Prime Numbers</button>
+    <h3 id="result"></h3>
 
 
     <script>
-        const isPrime = num => {
-            for (let i = 2, s = Math.sqrt(num); i <= s; i++)
-                if (num % i === 0) return false;
-            return num > 1;
+        function printPrimeNumbers(){
+            let numberRange = Number(document.getElementById("numberRange").value);
+            for (let index = 1; index <= numberRange; index++) {
+                if((index) % 2 === 0){
+                    console.log(index);
+                }
+            }
         }
-        function printPrimeNumbers() {
-            document.getElementById("firstNumber").innerText;
-            document.getElementById("secondNumber").innerText;
-        }
-
     </script>
 </body>
 
