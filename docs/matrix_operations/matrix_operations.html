@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matrix Calculator</title>
+</head>
+
+<body>
+    <script>
+        let m1_value0, m1_value1, m1_value2, m1_value3, m2_value0, m2_value1, m2_value2, m2_value3;
+        function calculateMatrix() {
+            m1_value0 = Number(document.getElementById("m1_value0").value);
+            m1_value1 = Number(document.getElementById("m1_value1").value);
+            m1_value2 = Number(document.getElementById("m1_value2").value);
+            m1_value3 = Number(document.getElementById("m1_value3").value);
+            m2_value0 = Number(document.getElementById("m2_value0").value);
+            m2_value1 = Number(document.getElementById("m2_value1").value);
+            m2_value2 = Number(document.getElementById("m2_value2").value);
+            m2_value3 = Number(document.getElementById("m2_value3").value);
+        }
+        function addMatrix() {
+            calculateMatrix();
+            document.getElementById("result1").innerText = m1_value0 + m2_value0;
+            document.getElementById("result2").innerText = m1_value1 + m2_value1;
+            document.getElementById("result3").innerText = m1_value2 + m2_value2;
+            document.getElementById("result4").innerText = m1_value3 + m2_value3;
+        }
+        function subtractMatrix() {
+            calculateMatrix();  
+            document.getElementById("result1").innerText = m1_value0 - m2_value0;
+            document.getElementById("result2").innerText = m1_value1 - m2_value1;
+            document.getElementById("result3").innerText = m1_value2 - m2_value2;
+            document.getElementById("result4").innerText = m1_value3 - m2_value3;
+        }
+        function multiplyMatrix() {
+            calculateMatrix();
+            let first_row = (m1_value0 * m2_value0) + (m1_value1 * m2_value2);
+            let second_row = (m1_value0 * m2_value1) + (m1_value1 * m2_value3);
+            let third_row = (m1_value2 * m2_value0) + (m1_value3 * m2_value2);
+            let fourth_row = (m1_value2 * m2_value1) + (m1_value3 * m2_value3);
+            document.getElementById("result1").innerText = first_row;
+            document.getElementById("result2").innerText = second_row;
+            document.getElementById("result3").innerText = third_row;
+            document.getElementById("result4").innerText = fourth_row;
+        }
+    </script>
+    <input type="number" name="m1_value0" id="m1_value0" />
+    <input type="number" name="m1_value1" id="m1_value1" />
+    <br />
+    <input type="number" name="m1_value2" id="m1_value2" />
+    <input type="number" name="m1_value3" id="m1_value3" />
+    <br /><br /><br /><br />
+    <input type="number" name="m2_value0" id="m2_value0" />
+    <input type="number" name="m2_value1" id="m2_value1" />
+    <br />
+    <input type="number" name="m2_value2" id="m2_value2" />
+    <input type="number" name="m2_value3" id="m2_value3" />
+    <br><br><br>
+    <input type="button" value="Add" onclick="addMatrix()" id="addBtn">
+    <input type="button" value="Subtract" onclick="subtractMatrix()" id="subtractBtn">
+    <input type="button" value="Multiply" id="multiplyBtn" onclick="multiplyMatrix()">
+
+    <table border="1">
+        <tr>
+            <td id="result1"></td>
+            <td id="result2"></td>
+        </tr>
+        <tr>
+            <td id="result3"></td>
+            <td id="result4"></td>
+        </tr>
+    </table>
+</body>
+
+</html>
