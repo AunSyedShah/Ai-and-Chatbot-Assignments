@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kth Largest</title>
+</head>
+
+<body>
+    <script>
+        function kthLargest() {
+            let k = Number(document.getElementById("k").value);
+            const arr = document.getElementById("arr").value.split(",").map(Number);
+            if (k == 0) {
+                document.getElementById("result").innerHTML = `value of k should not be zero`;
+            }
+            else if (k > arr.length) {
+                document.getElementById("result").innerHTML = `Number of elements in array should be greater or equal to ${k}<br>You Entered ${arr.length}.`;
+            }
+            else {
+                for (var i = 0; i < k; i++) {
+                    var max_index = i,
+                        tmp = arr[i];
+
+                    for (var j = i + 1; j < arr.length; j++) {
+                        if (arr[j] > arr[max_index]) {
+                            max_index = j;
+                        }
+                    }
+                    arr[i] = arr[max_index];
+                    arr[max_index] = tmp;
+                }
+                console.log(arr[k - 1]);
+                let pos = "";
+                if (k == 1) {
+                    pos = "st";
+                }
+                else if (k == 2) {
+                    pos = "nd";
+                }
+                else if (k == 3) {
+                    pos = "rd";
+                }
+                else {
+                    pos = "th";
+                }
+                message = `The ${k}${pos} largest element is ${arr[k - 1]}`;
+                document.getElementById("result").innerHTML = message;
+            }
+        }
+
+
+        var numbers = [1, 7, 30, 9, 14];
+
+        var findKthSmallest = function (array, number) {
+            array.sort(function (a, b) {
+                return a - b;
+            });//from  w w w.  j  a  v a2 s .  c o  m
+            return array[number - 1];
+        };
+
+        console.log(findKthSmallest(numbers, 2));
+
+    </script>
+    <p id="p">
+        Usecase: Find the kth largest element in an array.
+        <br>
+        For Example: [3, 1, 5, 12, 2, 11] and k = 3, return 5.
+        <br>
+        Means the 3rd largest element in the array is 5.
+    </p>
+    <input type="number" name="" id="k" placeholder="Enter Kth Largest">
+    <br>
+    <label for="arr">Enter comma separated values as Array</label>
+    <br>
+    <input type="text" name="" id="arr" placeholder="Example 2,3,56,100">
+    <br>
+    <input type="button" value="Calculate" onclick="kthLargest()" id="btn">
+    <br><br>
+    <p id="result"></p>
+</body>
+
+</html>
