@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
     <title>Kth Largest</title>
 </head>
 
@@ -18,7 +17,7 @@
                 document.getElementById("result").innerHTML = `value of k should not be zero`;
             }
             else if (k > arr.length) {
-                document.getElementById("result").innerHTML = `Number of elements in array should be greater than ${k}`;
+                document.getElementById("result").innerHTML = `Number of elements in array should be greater or equal to ${k}<br>You Entered ${arr.length}.`;
             }
             else {
                 for (var i = 0; i < k; i++) {
@@ -34,7 +33,20 @@
                     arr[max_index] = tmp;
                 }
                 console.log(arr[k - 1]);
-                message = "The " + k + "th largest element is " + arr[k - 1];
+                let pos = "";
+                if(k == 1){
+                    pos = "st";
+                }
+                else if(k == 2){
+                    pos = "nd";
+                }
+                else if(k == 3){
+                    pos = "rd";
+                }
+                else{
+                    pos = "th";
+                }
+                message = `The ${k}${pos} largest element is ${arr[k - 1]}`;
                 document.getElementById("result").innerHTML = message;
             }
         }
