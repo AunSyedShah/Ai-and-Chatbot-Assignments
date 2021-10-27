@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
     <title>Kth Largest</title>
 </head>
 
@@ -13,7 +14,10 @@
         function kthLargest() {
             let k = Number(document.getElementById("k").value);
             const arr = document.getElementById("arr").value.split(",").map(Number);
-            if (k > arr.length) {
+            if(k == 0){
+                document.getElementById("result").innerHTML = `value of k should not be zero`;
+            }
+            else if (k > arr.length) {
                 document.getElementById("result").innerHTML = `Number of elements in array should be greater than ${k}`;
             }
             else {
@@ -36,7 +40,7 @@
         }
 
     </script>
-    <p>
+    <p id="p">
         Usecase: Find the kth largest element in an array.
         <br>
         For Example: [3, 1, 5, 12, 2, 11] and k = 3, return 5.
@@ -49,7 +53,7 @@
     <br>
     <input type="text" name="" id="arr" placeholder="Example 2,3,56,100">
     <br>
-    <input type="button" value="Calculate" onclick="kthLargest()">
+    <input type="button" value="Calculate" onclick="kthLargest()" id="btn">
     <br><br>
     <p id="result"></p>
 </body>
